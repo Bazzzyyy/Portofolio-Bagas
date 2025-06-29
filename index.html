@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagaskara Ziaulhaq | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        dark: '#0F172A',
+                        darker: '#020617',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0F172A;
+            color: #E2E8F0;
+            scroll-behavior: smooth;
+        }
+        
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background: #334155;
+        }
+        
+        .skill-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: #1E293B;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+        }
+        
+        .dark .dark\:bg-darker {
+            background-color: #020617;
+        }
+        
+        .dark .dark\:border-gray-800 {
+            border-color: #1E293B;
+        }
+        
+        .dark .dark\:text-gray-300 {
+            color: #CBD5E1;
+        }
+        
+        .dark .dark\:hover\:bg-gray-800:hover {
+            background-color: #1E293B;
+        }
+    </style>
+</head>
+<body class="dark:bg-darker">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900/80 backdrop-blur-md z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold gradient-text">IBZ's Portfolio</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-primary transition">About</a>
+                    <a href="#experience" class="text-gray-300 hover:text-primary transition">Experience</a>
+                    <a href="#education" class="text-gray-300 hover:text-primary transition">Education</a>
+                    <a href="#organization" class="text-gray-300 hover:text-primary transition">Organization</a>
+                    <a href="#leadership" class="text-gray-300 hover:text-primary transition">Leadership</a>
+                    <a href="#skills" class="text-gray-300 hover:text-primary transition">Skills</a>
+                    <a href="#contact" class="text-gray-300 hover:text-primary transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="text-gray-300 hover:text-primary focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900/90 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">About</a>
+                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Experience</a>
+                <a href="#education" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Education</a>
+                <a href="#organization" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Organization</a>
+                <a href="#leadership" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Leadership</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Skills</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="section">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Ihsan Bagaskara <span class="gradient-text">Ziaulhaq</span></h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8">A results-driven business student with a strong passion for strategic problem-solving, marketing, and leadership.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="px-6 py-3 bg-primary text-white rounded-full hover:bg-blue-600 transition">Contact Me</a>
+                        <a href="#experience" class="px-6 py-3 border border-gray-700 text-gray-300 rounded-full hover:bg-gray-800 transition">View Experience</a>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="relative max-w-md mx-auto">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-primary to-emerald-500 rounded-2xl blur opacity-75 animate-pulse"></div>
+                        <div class="relative bg-gray-800 rounded-2xl overflow-hidden">
+                            <img src="Bagas Jas Full.jpg" alt="Profile" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">About Me</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-gray-300 mb-6">With extensive experience in business organizations, stakeholder engagement, and corporate collaborations, I have developed strong analytical and creative skills essential for case competitions.</p>
+                        <p class="text-gray-300 mb-6">My achievements, including a Microsoft Azure AI Fundamentals Certification, Gold Medal in the International Young Moslem Inventor Award, and national-level business and marketing competition experiences, showcase my ability to think critically, adapt quickly, and develop innovative solutions.</p>
+                        <p class="text-gray-300">I am eager to bring my expertise in marketing strategy, operations management, and data-driven decision-making to tackle complex business challenges and collaborate with like-minded problem solvers.</p>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                        <h3 class="text-xl font-semibold mb-6 text-primary">Personal Info</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-envelope text-primary mt-1 mr-4"></i>
+                                <span class="text-gray-300">bagascara@gmail.com</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-phone text-primary mt-1 mr-4"></i>
+                                <span class="text-gray-300">0896-3629-9191</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-primary mt-1 mr-4"></i>
+                                <span class="text-gray-300">Purwakarta, Indonesia</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fab fa-linkedin text-primary mt-1 mr-4"></i>
+                                <a href="#" class="text-gray-300 hover:text-primary transition">LinkedIn: Bagaskara Ziaulhaq</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Work Experience</h2>
+                <div class="space-y-8">
+                    <!-- Experience 1 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Project Consultant Leader</h3>
+                                <span class="text-gray-400">June 2025 - Present</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">PT Brawijaya Multi Usaha</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Led strategic efforts to enhance the holding company's social media presence across multiple platforms.</li>
+                                <li>Developed and implemented content strategies aligned with brand identity and corporate goals.</li>
+                                <li>Analyzed engagement metrics to optimize performance and increase audience reach and visibility.</li>
+                                <li>Coordinated with internal teams and external vendors to produce consistent, high-quality digital content.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 2 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Project Analyst</h3>
+                                <span class="text-gray-400">May 2025 - May 2025</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Jatim Park x Malang Health Tourism (Proyek Strategis Nasional) x ShARE Brawijaya University</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Conducted comprehensive secondary research to assess market fit for a luxury wellness resort.</li>
+                                <li>Synthesized data from reports, databases, and public sources to identify demand drivers.</li>
+                                <li>Provided actionable insights to support strategic planning and concept development.</li>
+                                <li>Collaborated with cross-functional teams to align research findings with business objectives.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 3 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Microsoft Brand Ambassador</h3>
+                                <span class="text-gray-400">May 2024 - July 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Mereka Indonesia in Collaboration with Microsoft Indonesia (Teman bAIk Batch#2)</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Conducted public education on Artificial Intelligence (AI) in Indonesia</li>
+                                <li>Promoted AI literacy among Indonesian communities</li>
+                                <li>Developed and produced 20 social media content pieces to enhance brand visibility.</li>
+                                <li>Strategically promoted upskilling programs in AI, Data Science, and Cybersecurity.</li>
+                                <li>Utilized data-driven insights to optimize content performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience 4 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Inventory & Sales Analyst</h3>
+                                <span class="text-gray-400">July 2022 - July 2022</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">CV. Jatiluhur Mas</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Conducted inventory control and monitoring of fish quantities across multiple ponds.</li>
+                                <li>Prepared detailed sales reports to track and evaluate transaction performance.</li>
+                                <li>Managed financial reporting by creating comprehensive income and expense reports.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Education</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Education 1 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary">Universitas Brawijaya</h3>
+                                <p class="text-gray-400">Aug 2023 - Present</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-2">Manajemen, Fakultas Ekonomi dan Bisnis</p>
+                        <p class="text-gray-300"><span class="font-medium">GPA:</span> 3.78/4.00</p>
+                    </div>
+                    
+                    <!-- Education 2 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-university text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary">University of Oxford</h3>
+                                <p class="text-gray-400">Department For Continuing Education</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">Social Entrepreneurship Course</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Experience Section -->
+    <section id="organization" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Organization Experience</h2>
+                <div class="space-y-8">
+                    <!-- Org 5 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Chief Operational Officer</h3>
+                                <span class="text-gray-400">December 2024 - Present</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Kelompok Studi Pasar Modal</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Creating and overseeing duty schedules and monitoring task completion.</li>
+                                <li>Conducting meetings to discuss progress and align team objectives.</li>
+                                <li>Managing room bookings and overseeing RDN Associates' performance.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Org 4 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Marketing Communication Associate</h3>
+                                <span class="text-gray-400">December 2024 - Present</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">ShARE Do Well Do Good Brawijaya University</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Designing creative and strategic content ideas that align with the brand's goals and audience interests.</li>
+                                <li>Preparing structured content guidelines for various formats, including Carousel posts and Reels, to ensure consistency and quality.</li>
+                                <li>Writing compelling captions that drive engagement and choosing the right background music to enhance content appeal.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Org 3 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Staff Stakeholder Engagement</h3>
+                                <span class="text-gray-400">September 2024 - December 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Brawijaya Stock Market Competition</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Initiated and managed external communication to propose partnerships and conduct negotiations effectively.</li>
+                                <li>Coordinated the fulfillment of partnership requirements, ensuring alignment with stakeholder expectations and organizational goals.</li>
+                                <li>Fostered strong relationships with external parties to support long-term collaboration and mutual benefits.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Org 2 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Executive Assistant for Chief Administrative Officer</h3>
+                                <span class="text-gray-400">September 2024 - December 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Kelompok Studi Pasar Modal Universitas Brawijaya</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Organized and maintained administrative documents for efficient operations.</li>
+                                <li>Scheduled and coordinated the CAO's agenda including meetings and events.</li>
+                                <li>Assisted in implementing organizational policies and facilitated coordination.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Org 1 -->
+                    <div class="timeline-item relative pl-8">
+                        <div class="absolute left-0 top-0 w-4 h-4 rounded-full bg-primary"></div>
+                        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Coordinator Assistant of Creative Media Division</h3>
+                                <span class="text-gray-400">May 2024 - October 2024</span>
+                            </div>
+                            <h4 class="text-lg font-medium text-gray-300 mb-2">Incubation of Society, Badan Eksekutif Mahasiswa Brawijaya</h4>
+                            <ul class="list-disc list-inside text-gray-300 space-y-2">
+                                <li>Collaborated with Division Coordinators to develop and assign detailed job descriptions for staff.</li>
+                                <li>Designed and delivered visually compelling designs for medium-to-high complexity projects.</li>
+                                <li>Supported cross-functional teams by contributing creative insights.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Skills & Expertise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Column -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 text-primary">Professional Skills</h3>
+                        <div class="space-y-6">
+                            <!-- Skill 1 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Public Speaking</span>
+                                    <span class="text-gray-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill 2 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Leadership</span>
+                                    <span class="text-gray-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill 3 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Communication</span>
+                                    <span class="text-gray-400">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 88%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 4 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Market Research</span>
+                                    <span class="text-gray-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill 5 -->
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-300">Strategic Planning</span>
+                                    <span class="text-gray-400">87%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 87%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 text-primary">Technical Skills</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Adobe Premiere Pro</span>
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Adobe After Effects</span>
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Adobe Photoshop</span>
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Video Content Creation</span>
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Voice Over</span>
+                            <span class="px-4 py-2 bg-gray-800 text-gray-300 rounded-full">Visual Explanation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Certifications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Certification 1 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-certificate text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Microsoft Azure AI Fundamentals</h3>
+                        <p class="text-gray-300">Microsoft Azure AI Fundamentals Certification</p>
+                    </div>
+                    
+                    <!-- Certification 2 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-certificate text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Grow Offline Sales</h3>
+                        <p class="text-gray-300">Grow Offline Sales Certification by Google</p>
+                    </div>
+                    
+                    <!-- Certification 3 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-certificate text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Social Entrepreneurship</h3>
+                        <p class="text-gray-300">Social Entrepreneurship Program Certification by University of Oxford</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Volunteer Experience -->
+    <section id="leadership" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Leadership & Volunteer Experience</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Leadership 1 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary">Student Council Chief</h3>
+                                <p class="text-gray-400">2021 - 2022</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-2">SMA Al Hikmah Boarding School Batu</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Designed and planned events, including delegating tasks and creating detailed job descriptions for team members to ensure smooth execution.</li>
+                            <li>Acted as the liaison between students and local communities, fostering effective communication and collaboration.</li>
+                            <li>Developed and managed event budgets by establishing and gaining consensus on financial plans.</li>
+                            <li>Officially launched and oversaw the successful implementation of planned events, ensuring alignment with objectives and expectations.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Leadership 2 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-users text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary">Batu's Best Student Council Chief</h3>
+                                <p class="text-gray-400">2021 - 2022</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-2">HIMO (Himpunan Musyawarah Osis) Kota Batu</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Facilitated communication and collaboration between HIMO East Java Province and HIMO Kota Batu, serving as a strategic liaison.</li>
+                            <li>Provided guidance and direction for organizational events to ensure successful planning and execution.</li>
+                            <li>Assisted the chairman in managing organizational operations, contributing to effective governance and decision-making.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Leadership 3 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-hands-helping text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-primary">Social In Care Unity Project</h3>
+                                <p class="text-gray-400">Volunteer</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-2">Social In Care</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Coordinated and oversaw event operations to ensure smooth and timely execution.</li>
+                            <li>Provided mentorship and emotional support to orphans during community programs.</li>
+                            <li>Managed logistical arrangements, including transportation and on-site mobility needs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Honors & Awards -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Achievements & Awards</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Award 1 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-trophy text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">HSBC Business Case Competition</h3>
+                        <p class="text-gray-300">National Round Participant</p>
+                    </div>
+                    
+                    <!-- Award 5 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-medal text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Gold Medalist</h3>
+                        <p class="text-gray-300">International Young Moslem Inventor Award</p>
+                    </div>
+                    
+                    <!-- Award 6 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-award text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Best Project Award</h3>
+                        <p class="text-gray-300">International Young Moslem Inventor Award</p>
+                    </div>
+                    
+                    <!-- Award 7 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Special Award</h3>
+                        <p class="text-gray-300">IPB University Department of Food Science and Technology</p>
+                    </div>
+                    
+                    <!-- Award 8 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-trophy text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Semi Grand Award</h3>
+                        <p class="text-gray-300">International Young Moslem Inventor Award</p>
+                    </div>
+                    
+                    <!-- Award 9 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-medal text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">2nd Place National Winner</h3>
+                        <p class="text-gray-300">Creative Video Competition by Universitas Trisakti</p>
+                    </div>
+                    
+                    <!-- Award 10 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-video text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Best Video Presentation</h3>
+                        <p class="text-gray-300">Award by Universitas Lampung</p>
+                    </div>
+                    
+                    <!-- Award 11 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-star text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Semifinalist</h3>
+                        <p class="text-gray-300">Ganesha Business Festival</p>
+                    </div>
+                    
+                    <!-- Award 12 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-video text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Purwakarta Regional Lab Video</h3>
+                        <p class="text-gray-300">Selected as Profile Video Creator</p>
+                    </div>
+                    
+                    <!-- Award 13 -->
+                    <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-primary transition">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                            <i class="fas fa-users text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-primary">Best Student Council President</h3>
+                        <p class="text-gray-300">HIMO Kota Batu at HIMO East Java Province</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="section">
+                <h2 class="text-3xl font-bold mb-12 text-center gradient-text">Get In Touch</h2>
+                <div class="max-w-md mx-auto">
+                    <h3 class="text-xl font-semibold mb-6 text-primary text-center">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-300 font-medium">Email</h4>
+                                <a href="mailto:bagascara@gmail.com" class="text-gray-400 hover:text-primary transition">bagascara@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-300 font-medium">Phone</h4>
+                                <a href="tel:089636299191" class="text-gray-400 hover:text-primary transition">0896-3629-9191</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-300 font-medium">Location</h4>
+                                <p class="text-gray-400">Purwakarta, Indonesia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mr-4 mt-1">
+                                <i class="fab fa-linkedin text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-gray-300 font-medium">LinkedIn</h4>
+                                <a href="#" class="text-gray-400 hover:text-primary transition">Bagaskara Ziaulhaq</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-xl font-bold gradient-text">IBZ's Portofolio</a>
+                    <p class="text-gray-400 mt-2">© 2023 All Rights Reserved</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Scroll to sections
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Dark mode toggle (if needed)
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+            });
+        }
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</html>
